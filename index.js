@@ -45,6 +45,7 @@ function askFormat(ter) {
 }
 
 function askTerm() {
+    console.clear()
     term.run()
         .then(async ter => {
             askFormat(ter)
