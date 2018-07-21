@@ -83,7 +83,7 @@ async function download(ter, form, extension) {
                         filter: form
                     })
                     .pipe(fs.createWriteStream(`Downloaded/${info.title}.${extension}`)).on('close', () => {
-                        console.log('\nThanks for downloading with us!'.rainbow)
+                        console.log('\nThanks for downloading with us!\n'.rainbow)
 
                         function endProm() {
                             endprompt.run().then(response => {
@@ -106,7 +106,7 @@ async function download(ter, form, extension) {
                 filter: form
             })
             .pipe(fs.createWriteStream(`Downloaded/${info.title}.${extension}`)).on('close', () => {
-                console.log('Thanks for downloading with us!'.rainbow)
+                console.log('Thanks for downloading with us!\n'.rainbow)
 
                 function endProm() {
                     endprompt.run().then(response => {
