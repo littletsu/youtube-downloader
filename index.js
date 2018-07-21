@@ -84,6 +84,7 @@ async function download(ter, form, extension) {
                                 else return endProm()
                             })
                         }
+                        endProm()
                     })
             })
         })
@@ -106,6 +107,7 @@ async function download(ter, form, extension) {
                         else return endProm()
                     })
                 }
+                endProm()
             })
     }
 }
