@@ -21,6 +21,11 @@ let choose = new prompt({
     message: "What video would you like?"
 })
 
+let endprompt = new prompt({
+    name: 'endprompt',
+    message: 'Would you like to download more? (Y\\N)'
+})
+
 function askFormat(ter) {
     format.run()
         .then(async form => {
@@ -88,6 +93,13 @@ async function download(ter, form, extension) {
             .pipe(fs.createWriteStream(`./Downloaded/${info.title}.${extension}`)).on('close', () => {
                 console.log('Thanks for downloading with us!'.rainbow)
 
+                function endProm() {
+                    endprompt.run().then(response => {
+                        if (response.toUpperCase().includes("Y")) return askTerm();
+                        else if (response.toUpperCase().includes("N")) return process.exit();
+                        else return endProm()
+                    })
+                }
             })
     }
 }
