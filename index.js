@@ -77,7 +77,13 @@ async function download(ter, form, extension) {
                     })
                     .pipe(fs.createWriteStream(`Downloaded/${info.title}.${extension}`)).on('close', () => {
                         console.log('\nThanks for downloading with us!'.rainbow)
-
+                        function endProm() {
+                            endprompt.run().then(response => {
+                                if (response.toUpperCase().includes("Y")) return askTerm();
+                                else if (response.toUpperCase().includes("N")) return process.exit();
+                                else return endProm()
+                            })
+                        }
                     })
             })
         })
