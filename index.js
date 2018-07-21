@@ -4,6 +4,12 @@ const fs = require('fs');
 const prompt = require('prompt-base');
 const colors = require('colors');
 
+var dir = './Downloaded';
+
+if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir);
+}
+
 process.title = "Youtube Downloader by Etzyy"
 
 let term = new prompt({
@@ -77,6 +83,7 @@ async function download(ter, form, extension) {
                     })
                     .pipe(fs.createWriteStream(`Downloaded/${info.title}.${extension}`)).on('close', () => {
                         console.log('\nThanks for downloading with us!'.rainbow)
+
                         function endProm() {
                             endprompt.run().then(response => {
                                 if (response.toUpperCase().includes("Y")) return askTerm();
@@ -97,7 +104,7 @@ async function download(ter, form, extension) {
         await ytdl(ter, {
                 filter: form
             })
-            .pipe(fs.createWriteStream(`./Downloaded/${info.title}.${extension}`)).on('close', () => {
+            .pipe(fs.createWriteStream(`Downloaded/${info.title}.${extension}`)).on('close', () => {
                 console.log('Thanks for downloading with us!'.rainbow)
 
                 function endProm() {
