@@ -82,7 +82,7 @@ async function download(ter, form, extension) {
                 await ytdl(videos[parseInt(num) - 1].url, {
                         filter: form
                     })
-                    .pipe(fs.createWriteStream(`Downloaded/${info.title}.${extension}`)).on('close', () => {
+                    .pipe(fs.createWriteStream(__dirname + `/Downloaded/${info.title.replace(/[^a-zA-Z ]/g, "").split(' ').join('_')}.${extension}`)).on('close', () => {
                         console.log('\nThanks for downloading with us!\n'.rainbow)
 
                         function endProm() {
@@ -105,7 +105,7 @@ async function download(ter, form, extension) {
         await ytdl(ter, {
                 filter: form
             })
-            .pipe(fs.createWriteStream(`Downloaded/${info.title}.${extension}`)).on('close', () => {
+            .pipe(fs.createWriteStream(__dirname + `/Downloaded/${info.title.replace(/[^a-zA-Z ]/g, "").split(' ').join('_')}.${extension}`)).on('close', () => {
                 console.log('Thanks for downloading with us!\n'.rainbow)
 
                 function endProm() {
