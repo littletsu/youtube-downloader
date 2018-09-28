@@ -1,4 +1,2 @@
 # youtube-downloader
-A simple node.js youtube mp3 and mp4 downloader made with ytdl-core, yt-search, prompt-base and colors.
-
-This is executable version, for your enjoy ;)
+this version is outdated, dont use it, please use the source version instead. ty for understanding
